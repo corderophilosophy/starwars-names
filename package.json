@@ -5,7 +5,8 @@
   "main": "src/index.js",
   "scripts": {
     "test": "mocha src/index.test.js",
-    "watch:test": "npm test -- -w"
+    "watch:test": "npm test -- -w",
+    "cover": "nyc npm test"
   },
   "repository": {
     "type": "git",
@@ -26,6 +27,22 @@
   },
   "devDependencies": {
     "chai": "3.5.0",
-    "mocha": "2.5.3"
+    "mocha": "2.5.3",
+    "nyc": "7.0.0"
+  },
+  "nyc": {
+    "all": true,
+    "check-coverage": true,
+    "branches": 100,
+    "function": 100,
+    "lines": 100,
+    "statements": 100,
+    "reporter": [
+      "text",
+      "lcov"
+    ],
+    "include": [
+      "src"
+    ]
   }
 }
