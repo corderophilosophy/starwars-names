@@ -4,6 +4,8 @@
   "description": "Get random Star Wars names",
   "main": "dist/index.js",
   "scripts": {
+    "add-contributor": "all-contributors add",
+    "generate-contributors": "all-contributors generate",
     "commit": "git-cz",
     "prebuild": "rimraf dist",
     "build": "npm-run-all --parallel build:*",
@@ -39,6 +41,7 @@
     "unique-random-array": "1.0.0"
   },
   "devDependencies": {
+    "all-contributors-cli": "3.0.6",
     "babel-cli": "6.10.1",
     "babel-loader": "6.2.4",
     "babel-plugin-istanbul": "1.0.3",
@@ -56,8 +59,10 @@
     "mocha": "2.5.3",
     "npm-run-all": "2.3.0",
     "nyc": "7.0.0",
+    "opt-cli": "1.5.1",
     "rimraf": "2.5.3",
     "semantic-release": "4.3.5",
+    "validate-commit-msg": "2.6.1",
     "webpack": "1.13.1"
   },
   "nyc": {
@@ -103,7 +108,8 @@
       "path": "cz-conventional-changelog"
     },
     "ghooks": {
-      "pre-commit": "npm run validate"
+      "commit-msg": "opt --in commit-msg --exec \"validate-commit-msg\"",
+      "pre-commit": "opt --in pre-commit --exec \"npm run validate\""
     }
   }
 }
